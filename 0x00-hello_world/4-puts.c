@@ -3,7 +3,7 @@
 	/**
 	 * main - Entry point
 	 *
-	 * Description: Write a C program
+	 * Description: Prints "Programming is like building a multilingual puzzle"
 	 *
 	 * Return: Always 0 (Success)
 	 */
