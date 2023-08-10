@@ -2,7 +2,8 @@
 
 	/**
 	 * main - Entry point
-	 * 
+	 *
+	 * Description: Write a C program
 	 * Return: Always 0 (Success)
 	 */
 	int main(void)
