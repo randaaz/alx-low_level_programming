@@ -3,8 +3,8 @@
 	/**
 	 * main - Entry point
 	 *
-	 * Description: 'the program's description'
-	 * @parameter: describ the parameter
+	 * Description: 'print \"Programming is like building a multilingual puzzle'
+	 * @parameter: void parameter
 	 *
 	 * Return: Always 0 (Success)
 	 */
