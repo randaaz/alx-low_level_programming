@@ -2,7 +2,10 @@
 
 	/**
 	 * main - Entry point
-	 * Description: Prints the string "\"Programming is like building a multilingual puzzle"
+	 *
+	 * Description: 'the program's description'
+	 * @parameter: describ the parameter
+	 *
 	 * Return: Always 0 (Success)
 	 */
 	int main(void)
