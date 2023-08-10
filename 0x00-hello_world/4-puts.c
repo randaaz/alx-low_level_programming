@@ -2,7 +2,7 @@
 
 	/**
 	 * main - Entry point
-	 * Description: Prints the string "Programming is like building a multilingual puzzle"
+	 * Description: print string
 	 * Return: Always 0 (Success)
 	 */
 	int main(void)
