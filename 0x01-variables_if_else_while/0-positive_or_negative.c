@@ -4,7 +4,7 @@
 #include <time.h>
 /* Description: This program will assign a random number to the variable n*/
 
-/* betty style doc for function main: if function */
+/* useing if function */
 int main(void)
 {
 	int n;
