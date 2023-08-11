@@ -2,9 +2,14 @@
 
 #include <stdlib.h>
 #include <time.h>
-/* Description: This program will assign a random number to the variable n*/
 
-/* useing if function */
+/**
+ * main - Entry point
+ *
+ * Description: This program will assign a random number to the variable n
+ *
+ * Return: Always 0 (Success)
+*/
 int main(void)
 {
 	int n;
