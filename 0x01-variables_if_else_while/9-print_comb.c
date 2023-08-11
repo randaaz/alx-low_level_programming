@@ -23,4 +23,6 @@ int main(void)
 		}
 		numbers++;
 	}
+	putchar('\n');
+	return (0);
 }
