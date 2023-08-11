@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <unistd.h>
 /**
  * main - Entry point
  * Description: Write a program print without usei any functios
