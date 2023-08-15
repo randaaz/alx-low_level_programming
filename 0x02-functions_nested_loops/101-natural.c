@@ -11,13 +11,12 @@
 int sum(int The_sum)
 {
 	 The_sum = 0;
-	int i;
-
-	for (i = 0; i < The_sum; i++)
+	 int r;
+	for (r = 0; r < The_sum; r++)
 	{
-		if (i % 3 == 0 || i % 5 == 0)
+		if (r % 3 == 0 || r % 5 == 0)
 		{
-			The_sum += i;
+			The_sum += r;
 		}
 	}
 	printf("%d\n", The_sum);
