@@ -30,6 +30,7 @@ void times_table(void)
 			}
 			else
 			{
+				if (column != 0);
 				_putchar(' ');
 				_putchar(result + '0');
 			}
