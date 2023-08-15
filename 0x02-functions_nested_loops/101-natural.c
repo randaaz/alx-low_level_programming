@@ -1,26 +1,23 @@
 #include <stdio.h>
-
 /**
- * sum - Calculates the sum of all the multiples of 3 or 5
- * below a given number.
- * @The_sum: The upper limit for which the sum is calculated.
+ * sum - Calculates the sum of multiples of 3 or 5 below a given number.
+ * @m: The upper limit for which the sum is calculated.
  *
  * Return: The sum of the multiples of 3 or 5 below the given limit.
 */
 
-int sum(int The_sum)
+int sum(int m)
 {
+	int The_sum = 0;
 	int r;
-	 The_sum = 0;
 
-	for (r = 0; r < The_sum; r++)
+	for (r = 0; r < m; r++)
 	{
 		if (r % 3 == 0 || r % 5 == 0)
 		{
 			The_sum += r;
 		}
 	}
-	printf("%d\n", The_sum);
 	return (The_sum);
 }
 
@@ -34,8 +31,6 @@ int sum(int The_sum)
 
 int main(void)
 {
-	int x = sum(1024);
-
-	printf("%d\n", x);
+	printf("%d\n", sum(1024));
 	return (0);
 }
