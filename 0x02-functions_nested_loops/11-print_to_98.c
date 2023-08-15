@@ -20,16 +20,11 @@ void print_to_98(int n)
 		{
 			if (i != 98)
 			{
-				_putchar(i / 10 + '0');
-				_putchar(i % 10 + '0');
-				_putchar(',');
-				_putchar(' ');
+				printf("%d, ", i);
 			}
 			else
 			{
-				_putchar(i / 10 + '0');
-				_putchar(i % 10 + '0');
-				_putchar('\n');
+				printf("%d\n", i);
 			}
 		}
 	}
@@ -39,16 +34,11 @@ void print_to_98(int n)
 		{
 			if (i != 98)
 			{
-				_putchar(i / 10 + '0');
-				_putchar(i % 10 + '0');
-				_putchar(',');
-				_putchar(' ');
+				printf("%d, ", i);
 			}
 			else
 			{
-				_putchar(i / 10 + '0');
-				_putchar(i % 10 + '0');
-				_putchar('\n');
+				printf("%d\n", i);
 			}
 		}
 	}
