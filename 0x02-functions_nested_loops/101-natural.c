@@ -11,8 +11,7 @@
 int sum(int The_sum)
 {
 	 The_sum = 0;
-	 int r;
-	for (r = 0; r < The_sum; r++)
+	for (int r = 0; r < The_sum; r++)
 	{
 		if (r % 3 == 0 || r % 5 == 0)
 		{
