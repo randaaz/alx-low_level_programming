@@ -10,8 +10,10 @@
 
 int sum(int The_sum)
 {
+	int r;
 	 The_sum = 0;
-	for (int r = 0; r < The_sum; r++)
+
+	for (r = 0; r < The_sum; r++)
 	{
 		if (r % 3 == 0 || r % 5 == 0)
 		{
