@@ -12,39 +12,26 @@
 
 void print_times_table(int n)
 {
-	int row, column, result;
+	int row, column;
 
-	if (n >= 0 && n <= 15)
+	if (n < 0 || n > 15)
+		return;
+
+	for (row = 0; row <= n; row++)
 	{
-		for (row = 0; row <= n; ++row)
+		for (column = 0; column <= n; column++)
 		{
-			for (column = 0; column <= n; ++column)
+			int result = row * column;
+
+			if (column == 0)
 			{
-				_putchar(',');
-				_putchar(' ');
-
-				result = row * column;
-
-				if (result <= 9)
-				{
-					_putchar(' ');
-				}
-				if (result <= 99)
-				{
-					_putchar(' ');
-				}
-				if (result >= 100)
-				{
-					_putchar(result / 100 + '0');
-					_putchar((result / 10) % 10 + '0');
-				}
-				else if (result >= 10)
-				{
-					_putchar((result / 10) % 10 + '0');
-					_putchar(result % 10 + '0');
-				}
+				printf("%d", result);
+			}
+			else
+			{
+				printf(", %3d", result);
+			}
 		}
-			_putchar('\n');
+		printf("\n");
 	}
-}
 }
