@@ -1,30 +1,20 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
  * main - Entry point
  *
- * Description:  prints _putchar, followed by a new line
+ * Description: prints _putchar, followed by a new line
  *
  * Return: Always 0 (Success)
 */
 
-void prints(void);
-
 int main(void)
 {
-	prints();
-	putchar('\n');
-	return (0);
-}
+	char ran[] = "_putchar";
+	int i;
 
-void prints(void)
-{
-	putchar('_');
-	putchar('p');
-	putchar('u');
-	putchar('t');
-	putchar('c');
-	putchar('h');
-	putchar('a');
-	putchar('r');
+	for (i = 0; i < 8; i++)
+		_putchar(ran[i]);
+	_putchar('\n');
+	return (0);
 }
