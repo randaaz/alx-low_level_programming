@@ -29,7 +29,9 @@ int length(int numb)
 int main(void)
 {
 	int i, z;
-	unsigned long int x = 1, y = 2, sum, max = 10000000, f1 = 0, f2 = 0, sum1 = 0;
+	unsigned long int x = 1,
+		      y = 2, sum, max = 1000000000,
+		      f1 = 0, f2 = 0, sum1 = 0;
 
 	for (i = 1; i <= 98; i++)
 	{
