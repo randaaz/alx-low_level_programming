@@ -21,6 +21,7 @@ int length(int numb)
 	}
 	return (l);
 }
+
 /**
  * main - Entry point
  * Description: prints the first 98 Fibonacci numbers
@@ -31,7 +32,7 @@ int main(void)
 {
 	int i, z;
 	unsigned long int x = 1,
-		      y = 2, sum, mx = 100000000,
+		      y = 2, sum, mx = 1000000000,
 		      f1 = 0, f2 = 0, sum1 = 0;
 
 	for (i = 1; i <= 98; i++)
@@ -54,7 +55,7 @@ int main(void)
 		x = y;
 		f1 = f2;
 		y = sum;
-		f1 = sum1;
+		f2 = sum1;
 
 
 		if (i != 98)
