@@ -29,15 +29,15 @@ int length(int numb)
 int main(void)
 {
 	int i, z;
-	unsigned long int x = 1,
-		      y = 2, sum, max = 1000000000,
+	unsigned long long int x = 1,
+		      y = 2, sum, max = 1000000000000000000,
 		      f1 = 0, f2 = 0, sum1 = 0;
 
 	for (i = 1; i <= 98; i++)
 	{
 		if (f1 > 0)
 		{
-			printf("%lu", f1);
+			printf("%llu", f1);
 		z = length(max) - 1 - length(x);
 		}
 
@@ -46,7 +46,7 @@ int main(void)
 			printf("%d", 0);
 			z--;
 		}
-		printf("%lu", x);
+		printf("%llu", x);
 
 		sum = (x + y) % max;
 		sum1 = f1 + f2 + (x + y) / max;
