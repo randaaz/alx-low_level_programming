@@ -29,16 +29,16 @@ int length(int numb)
 int main(void)
 {
 	int i, z;
-	unsigned long long int x = 1,
-		      y = 2, sum, max = 1000000000000000000,
+	unsigned long int x = 1,
+		      y = 2, sum, mx = 1000000000,
 		      f1 = 0, f2 = 0, sum1 = 0;
 
 	for (i = 1; i <= 98; i++)
 	{
 		if (f1 > 0)
 		{
-			printf("%llu", f1);
-		z = length(max) - 1 - length(x);
+			printf("%lu", f1);
+		z = length(mx) - 1 - length(x);
 		}
 
 		while (f1 > 0 && z > 0)
@@ -46,10 +46,10 @@ int main(void)
 			printf("%d", 0);
 			z--;
 		}
-		printf("%llu", x);
+		printf("%lu", x);
 
-		sum = (x + y) % max;
-		sum1 = f1 + f2 + (x + y) / max;
+		sum = (x + y) % mx;
+		sum1 = f1 + f2 + (x + y) / mx;
 		x = y;
 		f1 = f2;
 		y = sum;
