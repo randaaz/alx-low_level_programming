@@ -16,5 +16,6 @@ void print_square(int size);
 void print_triangle(int size);
 double squareRoot(double b);
 void  The_largest_prime_factors(long int numb);
+void print_number(int n);
 
 #endif
