@@ -2,7 +2,7 @@
 
 /**
  * print_square - draws a straight line in the terminal
- * @size: The number of times the character '*' should be printed
+ * @size: The number of times the character '#' should be printed
 */
 
 void print_square(int size)
@@ -18,7 +18,7 @@ void print_square(int size)
 	{
 		for (j = 0; j < size; j++)
 		{
-			_putchar('*');
+			_putchar('#');
 		}
 		_putchar('\n');
 	}
