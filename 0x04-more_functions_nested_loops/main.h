@@ -14,5 +14,7 @@ void print_line(int n);
 void print_diagonal(int n);
 void print_square(int size);
 void print_triangle(int size);
+double squareRoot(double b);
+void  The_largest_prime_factors(long int numb);
 
 #endif
