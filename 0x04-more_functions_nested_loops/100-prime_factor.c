@@ -35,7 +35,7 @@ void  The_largest_prime_factors(long int numb)
 	}
 	for (pn = 3; pn <= squareRoot(numb); pn += 2)
 	{
-		while (numb % 3 == 0)
+		while (numb % pn == 0)
 		{
 			numb = numb / pn;
 			large = pn;
