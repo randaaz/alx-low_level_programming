@@ -44,8 +44,8 @@ void  The_largest_prime_factors(long int numb)
 	if (numb > 2)
 	{
 		large = numb;
-		printf("%d", large);
 	}
+	printf("%d\n", large);
 }
 
 /**
