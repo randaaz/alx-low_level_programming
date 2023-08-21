@@ -18,11 +18,11 @@ int _atoi(char *s)
 		if (*s == '-')
 		{
 			sign *= -1;
-			i++;
 		}
 		else if (*s >= '0' && *s <= '9')
 		{
 			res = res * 10 + (*s - '0');
+			i = 1;
 		}
 		else if (i)
 		{
