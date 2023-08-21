@@ -26,7 +26,10 @@ int _atoi(char *s)
 		}
 		else if (s[i] == '+')
 		{
-			i++;
+			while (s[i] == '+')
+			{
+				i++;
+			}
 		}
 		else if (res > 0)
 		{
