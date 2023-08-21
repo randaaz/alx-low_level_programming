@@ -34,6 +34,6 @@ int _atoi(char *s)
 			break;
 		}
 	}
-	return res * sign
+	return (res * sign);
 
 }
