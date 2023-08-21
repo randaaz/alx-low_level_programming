@@ -19,7 +19,7 @@ int main(void)
 	sn = 0;
 	while (sn <= 2645)
 	{
-		pass = (rand() % (128 - 23) + 32);
+		pass = (rand() % 128);
 			sn += pass;
 		putchar(pass);
 	}
