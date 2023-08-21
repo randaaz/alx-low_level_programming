@@ -24,6 +24,5 @@ int main(void)
 		putchar(pass);
 	}
 	putchar(2772 - sn);
-	putchar('\n');
 	return (0);
 }
