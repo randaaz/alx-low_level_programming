@@ -11,8 +11,9 @@ void print_number(int n)
 {
 	unsigned int nu = n;
 
-	if (nu < 0)
+	if (n < 0)
 	{
+
 		nu = -n;
 	}
 	if (nu / 10 != 0)
