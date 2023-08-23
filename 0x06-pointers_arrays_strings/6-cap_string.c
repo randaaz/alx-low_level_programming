@@ -16,7 +16,8 @@ char *cap_string(char *sr)
 	{
 		if (sr[i] == ',' || sr[i] == ';' || sr[i] == '.' ||
 				sr[i] == '!' || sr[i] == '?' || sr[i] == '"' || sr[i] == '('
-				|| sr[i] == ')' || sr[i] == '{' || sr[i] == '}')
+				|| sr[i] == ')' || sr[i] == '{' || sr[i] == '}'
+				|| sr[i] == '\t' || sr[i] == '\n' || sr[i] == ' ')
 		{
 			symbols = 1;
 		}
