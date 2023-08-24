@@ -1,12 +1,12 @@
 #include "main.h"
+
 /**
  * print_buffer -  prints a buffer
  * @b: The buffer
  * @size: The number of bytes to print
  *
  * Return: void
-*/
-
+ */
 void print_buffer(char *b, int size)
 {
 	for (int i = 0; i < size; i += 10)
