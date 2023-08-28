@@ -3,7 +3,6 @@
 /**
  * print_chessboard - that prints the chessboard
  * @a: pointer to a string
- * @[8]: the number of value
  *
  * Return: pointer
  */
