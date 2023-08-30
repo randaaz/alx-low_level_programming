@@ -15,6 +15,12 @@ int is_prime_number(int n)
 {
 	return (_prime(n, 2));
 }
+/**
+ * _prime - Helper function for checking primality recursively
+ * @n: The number to check
+ * @x: The current divisor being checked
+ * Return: 1 if prime, 0 otherwise
+*/
 int _prime(int n, int x)
 {
 	if (x == n && n > 1 && n % x == 0)
