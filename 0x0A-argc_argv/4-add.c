@@ -28,6 +28,7 @@ int is_digit(char c)
 int main(int argc, char *argv[])
 {
 	int totalSum = 0;
+	int i;
 
 	if (argc == 1)
 	{
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 
-	for (int i = 1; i < argc; i++)
+	for (i = 1; i < argc; i++)
 	{
 		for (int j = 0; argv[i][j] != '\0'; j++)
 		{
