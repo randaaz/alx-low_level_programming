@@ -15,12 +15,11 @@
 int main(int argc, char *argv[])
 {
 	int i;
-
 	int totalSum = 0;
 
 	for (i = 1; i < argc; i++)
 	{
-		char *j = argv[argc];
+		char *j = argv[i];
 
 		for (; *j; j++)
 		{
