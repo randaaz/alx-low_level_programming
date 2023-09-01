@@ -1,20 +1,22 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-/*
+
+/**
  * is_digit - Checks if a character is a digit (0-9).
  * @c: The character to be checked.
  *
  * This function determines whether the given character is a digit or not.
- * It returns 1 if the character is a digit
- * (between '0' and '9'), and 0 otherwise.
+ * It returns 1 if the character is
+ * a digit (between '0' and '9'), and 0 otherwise.
  *
  * Return: 1 if @c is a digit, 0 otherwise.
-*/
+ */
 int is_digit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
+
 /**
  * main - Entry point
  *
