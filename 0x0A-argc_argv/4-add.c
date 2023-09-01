@@ -1,39 +1,40 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 /**
- * is_digit - Checks if a character is a digit (0-9).
- * @c: The character to be checked.
+ * main - Entry point
  *
- * This function determines whether the given character is a digit or not.
- * It returns 1 if the character is
- * a digit (between '0' and '9'), and 0 otherwise.
+ * Description: This program will adds positive numbers.
+ * the result of the multiplication, followed by a new line
+ * @argc: the number of argument
+ * @argv: the array of argument
  *
- * Return: 1 if @c is a digit, 0 otherwise.
+ * Return: 0 if it is Success or 1 does not receive two arguments
  */
+
 int main(int argc, char *argv[])
 {
-        int i;
+	int i;
 
-        int totalSum = 0;
-	char *j = argv[argc];
+	int totalSum = 0;
 
-        for (i = 1; i < argc; i++)
-        {
-                for (; *j; j++)
-                {
-                        if (*j < '0' || *j > '9')
-                        {
-                                printf("Error\n");
-                                return (1);
-                        }
-                }
+	for (i = 1; i < argc; i++)
+	{
+		char *j = argv[argc];
 
-                totalSum += atoi(argv[i]);
-        }
+		for (; *j; j++)
+		{
+			if (*j < '0' || *j > '9')
+			{
+				printf("Error\n");
+				return (1);
+			}
+		}
 
-        printf("%d\n", totalSum);
+		totalSum += atoi(argv[i]);
+	}
 
-        return (0);
+	printf("%d\n", totalSum);
+
+	return (0);
 }
