@@ -1,21 +1,5 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-/**
- * is_digit - Checks if a character is a digit (0-9).
- * @c: The character to be checked.
- *
- * This function determines whether the given character is a digit or not.
- * It returns 1 if the character is
- * a digit (between '0' and '9'), and 0 otherwise.
- *
- * Return: 1 if @c is a digit, 0 otherwise.
- */
-int is_digit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
 
 /**
  * main - Entry point
@@ -32,22 +16,20 @@ int main(int argc, char *argv[])
 	int i;
 
 	int totalSum = 0;
-	int j;
+	int *j;
 
 	for (i = 1; i < argc; i++)
 	{
-		for (j = 0; argv[i][j] != '\0'; j++)
+		for (j = argv[argc]; *j; j++)
 		{
-			if (!is_digit(argv[i][j]))
+			if (*j < '0' || *j > '9')
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
 
-		int num = atoi(argv[i]);
-
-		totalSum += num;
+		totalSum += atoi(argv[argc]);
 	}
 
 	printf("%d\n", totalSum);
