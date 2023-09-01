@@ -31,10 +31,6 @@ int main(int argc, char *argv[])
 {
 	int i;
 
-	if (argc == 1)
-	{
-		printf("0\n");
-	}
 	int totalSum = 0;
 
 	for (i = 1; i < argc; i++)
