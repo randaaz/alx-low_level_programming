@@ -17,11 +17,11 @@ int main(int argc, char *argv[])
         int i;
 
         int totalSum = 0;
-        char *j;
+	char *j = argv[argc];
 
         for (i = 1; i < argc; i++)
         {
-                for (j = argv[argc]; *j; j++)
+                for (; *j; j++)
                 {
                         if (*j < '0' || *j > '9')
                         {
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
                         }
                 }
 
-                totalSum += atoi(argv[argc]);
+                totalSum += atoi(argv[i]);
         }
 
         printf("%d\n", totalSum);
