@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 {
 	if (argc == 2)
 	{
-		int i, j;
+		int i;
 
 		int nary = atoi(argv[1]);
 
