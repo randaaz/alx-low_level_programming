@@ -10,8 +10,6 @@ char *str_concat(char *s1, char *s2);
 int **alloc_grid(int width, int height);
 void free_grid(int **grid, int height);
 char *argstostr(int ac, char **av);
-static int count_words(const char *str);
-static int is_space(char c);
 char **strtow(char *str);
 
 #endif
