@@ -44,19 +44,19 @@ static int is_space(char c)
  */
 char **strtow(char *str)
 {
+	int num_words, word_index, word_length, i;
+	char **result;
+
 	if (str == NULL || *str == '\0')
 		return (NULL);
-	int num_words = count_words(str);
-
+	num_words = count_words(str);
 	if (num_words == 0)
 		return (NULL);
-	char **result = (char **)malloc((num_words + 1) * sizeof(char *));
-
+	result = (char **)malloc((num_words + 1) * sizeof(char *));
 	if (result == NULL)
 		return (NULL);
-	int word_index = 0, word_length = 0;
-
-	for (int i = 0; str[i] != '\0'; i++)
+	word_index = 0, word_length = 0;
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (!is_space(str[i]))
 			word_length++;
