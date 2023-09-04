@@ -9,22 +9,22 @@
  */
 static int count_words(const char *str)
 {
-	int count = 0, in_word = 0;
+	int co = 0, iw = 0;
 
 	while (*str)
 	{
-		if (*str != ' ' && !in_word)
+		if (*str != ' ' && !iw)
 		{
-			in_word = 1;
-			count++;
+			iw = 1;
+			co++;
 		}
-		else if (*str == ' ' && in_word)
+		else if (*str == ' ' && iw)
 		{
-			in_word = 0;
+			iw = 0;
 		}
 		str++;
 	}
-	return (count);
+	return (co);
 }
 /**
  * is_space - Checks if a character is a space-like character.
@@ -44,43 +44,43 @@ static int is_space(char c)
  */
 char **strtow(char *str)
 {
-	int num_words, word_index, word_length, i;
-	char **result;
+	int nw, wi, wl, i;
+	char **r;
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
-	num_words = count_words(str);
-	if (num_words == 0)
+	nw = count_words(str);
+	if (nw == 0)
 		return (NULL);
-	result = (char **)malloc((num_words + 1) * sizeof(char *));
-	if (result == NULL)
+	r = (char **)malloc((nw + 1) * sizeof(char *));
+	if (r == NULL)
 		return (NULL);
-	word_index = 0, word_length = 0;
+	wi = 0, wl = 0;
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (!is_space(str[i]))
-			word_length++;
-		else if (word_length > 0)
+			wl++;
+		else if (wl > 0)
 		{
-			result[word_index] = (char *)malloc((word_length + 1) * sizeof(char));
-			if (result[word_index] == NULL)
+			r[wi] = (char *)malloc((wl + 1) * sizeof(char));
+			if (r[wi] == NULL)
 				return (NULL);
-			strncpy(result[word_index], &str[i - word_length], word_length);
-			result[word_index][word_length] = '\0';
-			word_index++;
-			word_length = 0;
+			strncpy(r[wi], &str[i - wl], wl);
+			r[wi][wl] = '\0';
+			wi++;
+			wl = 0;
 		}
 	}
-	if (word_length > 0)
+	if (wl > 0)
 	{
-		result[word_index] = (char *)malloc((word_length + 1) * sizeof(char));
-		if (result[word_index] == NULL)
+		r[wi] = (char *)malloc((wl + 1) * sizeof(char));
+		if (r[wi] == NULL)
 			return (NULL);
-		strncpy(result[word_index], &str[strlen(str) - word_length], word_length);
-		result[word_index][word_length] = '\0';
-		word_index++;
+		strncpy(r[wi], &str[strlen(str) - wl], wl);
+		r[wi][wl] = '\0';
+		wi++;
 	}
-	result[word_index] = NULL;
+	r[wi] = NULL;
 
 	return (result);
 }
