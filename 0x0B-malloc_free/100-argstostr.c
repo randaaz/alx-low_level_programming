@@ -8,7 +8,7 @@
  *
  * Return: a pointer to a new string containing
  * concatenated arguments, or NULL on failure
-*/
+ */
 char *argstostr(int ac, char **av)
 {
 	int i, j, l = 0, tl = 0;
@@ -23,9 +23,9 @@ char *argstostr(int ac, char **av)
 		for (j = 0; av[i][j] != '\0'; j++)
 		{
 			l++;
-			tl += l + 1;
-			l = 0;
 		}
+		tl += l + 1;
+		l = 0;
 	}
 	new = (char *)malloc(sizeof(char) * tl + 1);
 
