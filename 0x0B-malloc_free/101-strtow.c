@@ -7,6 +7,7 @@
  *
  * Return: The number of words in the string.
  */
+static int count_words(const char *str);
 static int count_words(const char *str)
 {
 	int co = 0, iw = 0;
@@ -32,6 +33,7 @@ static int count_words(const char *str)
  *
  * Return: 1 if the character is a space-like character, 0 otherwise.
  */
+static int is_space(char c);
 static int is_space(char c)
 {
 	return (c == ' ');
