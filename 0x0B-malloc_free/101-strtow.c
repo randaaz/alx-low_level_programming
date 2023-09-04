@@ -82,5 +82,5 @@ char **strtow(char *str)
 	}
 	r[wi] = NULL;
 
-	return (result);
+	return (r);
 }
