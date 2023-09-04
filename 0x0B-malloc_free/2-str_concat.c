@@ -20,13 +20,19 @@ char *str_concat(char *s1, char *s2)
 	{
 		return (NULL);
 	}
+	if (s1 != NULL)
+	{
 	for (i = 0; s1[i] != '\0'; i++)
 	{
 		l1++;
 	}
+	}
+	if (s2 != NULL)
+	{
 	for (i = 0; s2[i] != '\0'; i++)
 	{
 		l2++;
+	}
 	}
 	new = (char *)malloc(sizeof(char) * (l1 + l2 + 1));
 
