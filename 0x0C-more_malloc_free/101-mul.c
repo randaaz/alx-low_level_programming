@@ -9,7 +9,6 @@
  * @argv: The array of arguments
  * Return: 0 on success, 98 on failure
  */
-
 int main(int argc, char *argv[])
 {
 	char *num1, *num2;
@@ -52,7 +51,6 @@ int main(int argc, char *argv[])
 
 	return (0);
 }
-
 /**
  * is_valid_digit - Check if a character is a valid digit
  * @c: The character to check
@@ -63,56 +61,53 @@ int is_valid_digit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
-
 /**
  * multiply - Multiply two positive numbers
  * @num1: The first number as a string
  * @num2: The second number as a string
  */
-
 void multiply(char *num1, char *num2)
 {
-	int len1 = str_len(num1);
-	int len2 = str_len(num2);
-	int *result;
-	int i, j, carry, product;
+	int l1 = str_len(num1);
+	int l2 = str_len(num2);
+	int *res;
+	int i, j, cy, pro;
 
-	result = calloc(len1 + len2, sizeof(int));
-	if (result == NULL)
+	res = calloc(l1 + l2, sizeof(int));
+	if (res == NULL)
 	{
 		printf("Error\n");
 		exit(98);
 	}
 
-	for (i = len1 - 1; i >= 0; i--)
+	for (i = l1 - 1; i >= 0; i--)
 	{
-		carry = 0;
-		for (j = len2 - 1; j >= 0; j--)
+		cy = 0;
+		for (j = l2 - 1; j >= 0; j--)
 		{
-			product = (num1[i] - '0') * (num2[j] - '0') + result[i + j + 1] + carry;
-			carry = product / 10;
-			result[i + j + 1] = product % 10;
+			pro = (num1[i] - '0') * (num2[j] - '0') + res[i + j + 1] + cy;
+			cy = pro / 10;
+			res[i + j + 1] = pro % 10;
 		}
-		result[i + j + 1] = carry;
+		res[i + j + 1] = cy;
 	}
 
-	for (i = 0; i < len1 + len2; i++)
+	for (i = 0; i < l1 + l2; i++)
 	{
-		if (result[i] != 0)
+		if (res[i] != 0)
 		{
 			break;
 		}
 	}
 
-	for (; i < len1 + len2; i++)
+	for (; i < l1 + l2; i++)
 	{
-		_putchar(result[i] + '0');
+		_putchar(res[i] + '0');
 	}
 	_putchar('\n');
 
-	free(result);
+	free(res);
 }
-
 /**
  * str_len - Calculate the length of a string.
  * @str: The string to calculate the length of.
@@ -126,15 +121,13 @@ void multiply(char *num1, char *num2)
  * Return: The length of the string (number of characters) excluding the null
  * terminator.
  */
-
 int str_len(char *str)
 {
-	int len = 0;
+	int l = 0;
 
-	while (str[len] != '\0')
+	while (str[l] != '\0')
 	{
-		len++;
+		l++;
 	}
-	return (len);
+	return (l);
 }
-
