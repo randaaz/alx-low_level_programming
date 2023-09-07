@@ -9,6 +9,7 @@
 void print_error(void)
 {
 	int i;
+
 	char *error_message = "Error\n";
 
 	for (i = 0; i < 5; i++)
