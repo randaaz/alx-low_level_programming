@@ -3,8 +3,6 @@
 
 /**
  * print_error - print Error, followed by a new line
- *
- * Return: void
  */
 
 void print_error(void)
@@ -40,6 +38,24 @@ void print_number(int n)
 }
 
 /**
+ * is_digit - Check if a string contains only digits
+ * @str: pointer
+ * Return: 1 if all characters are digits, 0 otherwise
+ */
+int is_digit(char *str)
+{
+	while (*str)
+	{
+		if (*str < '0' || *str > '9')
+		{
+			return (0);
+		}
+		str++;
+	}
+	return (1);
+}
+
+/**
  * main - Entery point
  * Description: multiplies two positive numbers
  * @argc: The number of argument
@@ -50,30 +66,26 @@ void print_number(int n)
 
 int main(int argc, char *argv[])
 {
-	char *p1, *p2;
-	long num1, num2, mul;
+	int num1, num2, mul;
 
 	if (argc != 3)
 	{
 		print_error();
 		exit(98);
 	}
-	num1 = strtol(argv[1], &p1, 10);
-	num2 = strtol(argv[2], &p2, 10);
-	if (*p1 != '\0' || *p2 != '\0')
+	if (!is_digit(argv[1]) || !is_digit(argv[2]))
 	{
 		print_error();
 		exit(98);
 	}
+	num1 = atoi(argv[1]);
+	num2 = atoi(argv[2]);
 	mul = num1 * num2;
 	if (mul == 0)
 	{
 		_putchar('0');
 	}
-	else
-	{
-		print_number(mul);
-	}
+	print_number(mul);
 	_putchar('\n');
 	return (0);
 }
