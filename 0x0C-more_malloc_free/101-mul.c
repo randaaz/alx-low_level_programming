@@ -1,36 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include "main.h"
 
 /**
- * _putchar - Write a character to stdout.
- * @c: The character to print
- * Return: 1 on success, -1 on error
- */
-
-int _putchar(char c);
-
-/**
- * is_valid_digit - Check if a character is a valid digit.
- * @c: The character to check
- * Return: 1 if valid, 0 if not
- */
-
-int is_valid_digit(char c);
-
-/**
- * multiply - Multiply two positive numbers.
- * @num1: The first number as a string.
- * @num2: The second number as a string.
- */
-
-void multiply(char *num1, char *num2);
-
-/**
- * main - Entry point of the program.
- * @argc: The number of command-line arguments.
- * @argv: An array of command-line argument strings.
- * Return: 0 on success, 98 on error
+ * main - Entry point
+ * Description: Multiplies two positive numbers
+ * @argc: The number of arguments
+ * @argv: The array of arguments
+ * Return: 0 on success, 98 on failure
  */
 
 int main(int argc, char *argv[])
@@ -71,18 +48,7 @@ int main(int argc, char *argv[])
 }
 
 /**
- * _putchar - Write a character to stdout.
- * @c: The character to print
- * Return: 1 on success, -1 on error
- */
-
-int _putchar(char c)
-{
-	return (putchar(c));
-}
-
-/**
- * is_valid_digit - Check if a character is a valid digit.
+ * is_valid_digit - Check if a character is a valid digit
  * @c: The character to check
  * Return: 1 if valid, 0 if not
  */
@@ -93,15 +59,15 @@ int is_valid_digit(char c)
 }
 
 /**
- * multiply - Multiply two positive numbers.
- * @num1: The first number as a string.
- * @num2: The second number as a string.
+ * multiply - Multiply two positive numbers
+ * @num1: The first number as a string
+ * @num2: The second number as a string
  */
 
 void multiply(char *num1, char *num2)
 {
-	int len1 = strlen(num1);
-	int len2 = strlen(num2);
+	int len1 = str_len(num1);
+	int len2 = str_len(num2);
 	int *result;
 	int i, j, carry, product;
 
@@ -139,4 +105,29 @@ void multiply(char *num1, char *num2)
 	_putchar('\n');
 
 	free(result);
+}
+
+/**
+ * str_len - Calculate the length of a string.
+ * @str: The string to calculate the length of.
+ *
+ * Description: This function takes a pointer to a character array (string) as
+ * input and calculates the length of the string by iterating through it until
+ * the null terminator ('\0') is encountered. It counts each character until
+ * the end of the string is reached, and the count represents the length of the
+ * string.
+ *
+ * Return: The length of the string (number of characters) excluding the null
+ * terminator.
+ */
+
+int str_len(char *str)
+{
+	int len = 0;
+
+	while (str[len] != '\0')
+	{
+		len++;
+	}
+	return (len);
 }
