@@ -1,15 +1,15 @@
 #include "main.h"
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * print_error - print Error, followed by a new line
  *
  * Return: void
  */
-void print_error(void)
+void print_error()
 {
 	int i;
-
 	char *error_message = "Error\n";
 
 	for (i = 0; i < 5; i++)
@@ -19,58 +19,121 @@ void print_error(void)
 }
 
 /**
- * print_number - print numbers
- * @n: The number
+ * is_digit - check if a string is composed of digits
+ * @str: The string to check
  *
- * Return: void
+ * Return: 1 if composed of digits, 0 otherwise
  */
-void print_number(int n)
+int is_digit(char *str)
 {
-	if (n < 0)
+	while (*str)
 	{
-		_putchar('-');
-		n = -n;
+		if (*str < '0' || *str > '9')
+		{
+			return 0;
+		}
+		str++;
 	}
-	if (n / 10 != 0)
-	{
-		print_number(n / 10);
-	}
-	_putchar((n % 10) + '0');
+	return 1;
 }
 
 /**
- * main - Entry point
- * Description: multiplies two positive numbers
- * @argc: The number of arguments
- * @argv: The array of arguments
+ * multiply_strings - multiply two strings representing numbers
+ * @str1: The first number as a string
+ * @str2: The second number as a string
  *
- * Return: the result, followed by a new line
+ * Return: The result as a string
  */
+char *multiply_strings(char *str1, char *str2)
+{
+	int len1 = strlen(str1);
+	int len2 = strlen(str2);
+
+	int *result = calloc(len1 + len2, sizeof(int));
+
+	if (result == NULL)
+	{
+		return (NULL);
+	}
+
+	for (int i = len1 - 1; i >= 0; i--)
+	{
+		for (int j = len2 - 1; j >= 0; j--)
+		{
+			int product = (str1[i] - '0') * (str2[j] - '0');
+			int sum = product + result[i + j + 1];
+			result[i + j] += sum / 10;
+			result[i + j + 1] = sum % 10;
+		}
+	}
+
+	char *res_str = malloc((len1 + len2 + 1) * sizeof(char));
+
+	if (res_str == NULL)
+	{
+		free(result);
+		return NULL;
+	}
+
+	int i = 0;
+
+	while (i < len1 + len2 && result[i] == 0)
+	{
+		i++;
+	}
+
+	if (i == len1 + len2)
+	{
+		res_str[0] = '0';
+		res_str[1] = '\0';
+	}
+	else
+	{
+		int j = 0;
+
+		while (i < len1 + len2)
+		{
+			res_str[j++] = result[i++] + '0';
+		}
+		res_str[j] = '\0';
+	}
+
+	free(result);
+	return res_str;
+}
+
 int main(int argc, char *argv[])
 {
-	char *p1, *p2;
-	long num1, num2, mul;
+	if (argc != 3 || !is_digit(argv[1]) || !is_digit(argv[2]))
+	{
+		print_error();
+		exit(98);
+	}
 
-	if (argc != 3)
+	char *num1 = argv[1];
+	char *num2 = argv[2];
+
+	char *result_str = multiply_strings(num1, num2);
+	if (result_str == NULL)
 	{
+		// Handle memory allocation error
 		print_error();
 		exit(98);
 	}
-	num1 = strtol(argv[1], &p1, 10);
-	num2 = strtol(argv[2], &p2, 10);
-	if (*p1 != '\0' || *p2 != '\0')
-	{
-		print_error();
-		exit(98);
-	}
-	mul = num1 * num2;
-	if (mul == 0)
+
+	if (strcmp(result_str, "0") == 0)
 	{
 		_putchar('0');
-	} else
-	{
-		print_number(mul);
 	}
+	else
+	{
+		for (int i = 0; result_str[i] != '\0'; i++)
+		{
+			_putchar(result_str[i]);
+		}
+	}
+
 	_putchar('\n');
+	free(result_str);
 	return (0);
 }
