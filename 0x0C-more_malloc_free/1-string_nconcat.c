@@ -20,12 +20,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		s2 = "";
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
-	for (i = 0; i < s1[i] != '\0'; i++)
+	for (i = 0; s1[i] != '\0'; i++)
 		l1++;
-	for (i = 0; i < s2[i] != '\0'; i++)
+	for (i = 0; s2[i] != '\0'; i++)
 		l2++;
-	for (i = 0; s2[i] <= n; i++)
-		l3++;
 	if (n >= l2)
 		l3 = l2;
 	else
