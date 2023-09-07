@@ -42,6 +42,12 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	if (num1[0] == '0' || num2[0] == '0')
+	{
+		printf("0\n");
+		return (0);
+	}
+
 	multiply(num1, num2);
 
 	return (0);
@@ -131,3 +137,4 @@ int str_len(char *str)
 	}
 	return (len);
 }
+
