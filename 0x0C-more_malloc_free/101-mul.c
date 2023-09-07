@@ -1,139 +1,119 @@
 #include "main.h"
 #include <stdlib.h>
-#include <string.h>
 
 /**
- * print_error - print Error, followed by a new line
- *
- * Return: void
+ * print_error - prints Error, followed by a new line
  */
-void print_error()
+void print_error(void)
 {
-	int i;
 	char *error_message = "Error\n";
 
-	for (i = 0; i < 5; i++)
-	{
-		_putchar(error_message[i]);
-	}
+	while (*error_message)
+		_putchar(*error_message++);
 }
 
 /**
- * is_digit - check if a string is composed of digits
- * @str: The string to check
- *
- * Return: 1 if composed of digits, 0 otherwise
+ * print_number - prints numbers
+ * @n: The number as a string
  */
-int is_digit(char *str)
+void print_number(char *n)
 {
-	while (*str)
-	{
-		if (*str < '0' || *str > '9')
-		{
-			return 0;
-		}
-		str++;
-	}
-	return 1;
+	while (*n == '0' && *(n + 1) != '\0')
+		n++;
+	while (*n)
+		_putchar(*n++);
 }
 
 /**
- * multiply_strings - multiply two strings representing numbers
- * @str1: The first number as a string
- * @str2: The second number as a string
- *
- * Return: The result as a string
+ * multiply - multiplies two strings representing numbers
+ * @num1: First number as a string
+ * @num2: Second number as a string
+ * Return: Result of the multiplication as a string
  */
-char *multiply_strings(char *str1, char *str2)
+char *multiply(char *num1, char *num2)
 {
-	int len1 = strlen(str1);
-	int len2 = strlen(str2);
+	int len1 = 0, len2 = 0, len_mul = 0, *result, n1;
+	char *str_result;
 
-	int *result = calloc(len1 + len2, sizeof(int));
+	while (num1[len1])
+		len1++;
+	while (num2[len2])
+		len2++;
 
-	if (result == NULL)
-	{
+	len_mul = len1 + len2;
+	result = calloc(len_mul, sizeof(int));
+
+	if (!result)
 		return (NULL);
-	}
 
 	for (int i = len1 - 1; i >= 0; i--)
-	{
 		for (int j = len2 - 1; j >= 0; j--)
 		{
-			int product = (str1[i] - '0') * (str2[j] - '0');
-			int sum = product + result[i + j + 1];
+			n1 = num1[i] - '0', n2 = num2[j] - '0', sum = n1 * n2 + result[i + j + 1];
+
 			result[i + j] += sum / 10;
 			result[i + j + 1] = sum % 10;
 		}
-	}
 
-	char *res_str = malloc((len1 + len2 + 1) * sizeof(char));
-
-	if (res_str == NULL)
+	if (result[0] == 0)
 	{
-		free(result);
-		return NULL;
-	}
-
-	int i = 0;
-
-	while (i < len1 + len2 && result[i] == 0)
-	{
-		i++;
-	}
-
-	if (i == len1 + len2)
-	{
-		res_str[0] = '0';
-		res_str[1] = '\0';
+		str_result = malloc(len_mul);
+		for (int i = 1; i < len_mul; i++)
+			str_result[i - 1] = result[i] + '0';
+		str_result[len_mul - 1] = '\0';
 	}
 	else
 	{
-		int j = 0;
-
-		while (i < len1 + len2)
-		{
-			res_str[j++] = result[i++] + '0';
-		}
-		res_str[j] = '\0';
+		str_result = malloc(len_mul + 1);
+		for (int i = 0; i < len_mul; i++)
+			str_result[i] = result[i] + '0';
+		str_result[len_mul] = '\0';
 	}
 
 	free(result);
-	return res_str;
+	return (str_result);
 }
 
+/**
+ * main - Entry point
+ * Description: Multiplies two positive numbers
+ * @argc: The number of arguments
+ * @argv: The array of arguments
+ * Return: 0 on success, 98 on failure
+ */
 int main(int argc, char *argv[])
 {
-	if (argc != 3 || !is_digit(argv[1]) || !is_digit(argv[2]))
+	char *num1, *num2, *result;
+
+	if (argc != 3)
 	{
 		print_error();
 		exit(98);
 	}
 
-	char *num1 = argv[1];
-	char *num2 = argv[2];
+	num1 = argv[1];
+	num2 = argv[2];
 
-	char *result_str = multiply_strings(num1, num2);
-	if (result_str == NULL)
-	{
-		// Handle memory allocation error
-		print_error();
-		exit(98);
-	}
+	while (*num1 == '0' && *(num1 + 1) != '\0')
+		num1++;
+	while (*num2 == '0' && *(num2 + 1) != '\0')
+		num2++;
 
-	if (strcmp(result_str, "0") == 0)
-	{
+	if (*num1 == '\0' || *num2 == '\0')
 		_putchar('0');
-	}
 	else
 	{
-		for (int i = 0; result_str[i] != '\0'; i++)
+		result = multiply(num1, num2);
+		if (!result)
 		{
-			_putchar(result_str[i]);
+			print_error();
+			exit(98);
 		}
+		print_number(result);
+		free(result);
 	}
 
 	_putchar('\n');
-	free(result_str);
+
 	return (0);
 }
