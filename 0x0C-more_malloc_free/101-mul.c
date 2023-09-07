@@ -1,66 +1,74 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 /**
- * print_error - prints Error, followed by a new line
+ * _putchar - Write a character to stdout
+ * @c: The character to print
+ * Return: 1 on success, -1 on error
  */
-void print_error(void)
+int _putchar(char c)
 {
-	char *error_message = "Error\n";
+	return (putchar(c));
+}
 
-	while (*error_message)
-		_putchar(*error_message++);
+
+/**
+ * is_valid_digit - Check if a character is a valid digit
+ * @c: The character to check
+ * Return: 1 if valid, 0 if not
+ */
+int is_valid_digit(char c)
+{
+	return (c >= '0' && c <= '9');
 }
 
 /**
- * print_number - prints numbers
- * @n: The number as a string
+ * multiply - Multiply two positive numbers
+ * @num1: The first number as a string
+ * @num2: The second number as a string
  */
-void print_number(char *n)
-{
-	while (*n == '0' && *(n + 1) != '\0')
-		n++;
-	while (*n)
-		_putchar(*n++);
-}
-
-/**
- * multiply - multiplies two strings representing numbers
- * @num1: First number as a string
- * @num2: Second number as a string
- * Return: Result of the multiplication as a string
- */
-char *multiply(char *num1, char *num2)
+void multiply(char *num1, char *num2)
 {
 	int len1 = strlen(num1);
 	int len2 = strlen(num2);
-	int len_mul = len1 + len2;
-	char *result = malloc(len_mul * sizeof(char));
-	int i, j, n1, n2, sum;
+	int *result;
+	int i, j, carry, product;
 
-	if (!result)
-		return (NULL);
-
-	for (i = 0; i < len_mul; i++)
-		result[i] = '0';
+	result = calloc(len1 + len2, sizeof(int));
+	if (result == NULL)
+	{
+		printf("Error\n");
+		exit(98);
+	}
 
 	for (i = len1 - 1; i >= 0; i--)
 	{
-		n1 = num1[i] - '0';
+		carry = 0;
 		for (j = len2 - 1; j >= 0; j--)
 		{
-			n2 = num2[j] - '0';
-			sum = n1 * n2 + (result[i + j + 1] - '0');
-			result[i + j + 1] = (sum % 10) + '0';
-			result[i + j] += sum / 10;
+			product = (num1[i] - '0') * (num2[j] - '0') + result[i + j + 1] + carry;
+			carry = product / 10;
+			result[i + j + 1] = product % 10;
+		}
+		result[i + j + 1] = carry;
+	}
+
+	for (i = 0; i < len1 + len2; i++)
+	{
+		if (result[i] != 0)
+		{
+			break;
 		}
 	}
 
-	if (result[0] == '0')
-		result++;
+	for (; i < len1 + len2; i++)
+	{
+		_putchar(result[i] + '0');
+	}
+	_putchar('\n');
 
-	return (result);
+	free(result);
 }
 /**
  * main - Entry point
@@ -71,37 +79,37 @@ char *multiply(char *num1, char *num2)
  */
 int main(int argc, char *argv[])
 {
-	char *num1, *num2, *result;
+	char *num1, *num2;
+	int i;
 
 	if (argc != 3)
 	{
-		print_error();
-		exit(98);
+		printf("Error\n");
+		return (98);
 	}
 
 	num1 = argv[1];
 	num2 = argv[2];
 
-	while (*num1 == '0' && *(num1 + 1) != '\0')
-		num1++;
-	while (*num2 == '0' && *(num2 + 1) != '\0')
-		num2++;
-
-	if (*num1 == '\0' || *num2 == '\0')
-		_putchar('0');
-	else
+	for (i = 0; num1[i] != '\0'; i++)
 	{
-		result = multiply(num1, num2);
-		if (!result)
+		if (!is_valid_digit(num1[i]))
 		{
-			print_error();
-			exit(98);
+			printf("Error\n");
+			return (98);
 		}
-		print_number(result);
-		free(result);
 	}
 
-	_putchar('\n');
+	for (i = 0; num2[i] != '\0'; i++)
+	{
+		if (!is_valid_digit(num2[i]))
+		{
+			printf("Error\n");
+			return (98);
+		}
+	}
+
+	multiply(num1, num2);
 
 	return (0);
 }
