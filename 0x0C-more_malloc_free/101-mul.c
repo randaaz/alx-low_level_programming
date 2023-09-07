@@ -8,9 +8,10 @@
  */
 void print_error(void)
 {
+	int i;
 	char *error_message = "Error\n";
 
-	for (int i = 0; i < 5; i++)
+	for (i = 0; i < 5; i++)
 	{
 		_putchar(error_message[i]);
 	}
