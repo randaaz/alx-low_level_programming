@@ -38,8 +38,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 	nl = _len(name);
-        ol = _len(owner);
-
+	ol = _len(owner);
 	new->name = malloc((nl + 1) * sizeof(char));
 	new->owner = malloc((ol + 1) * sizeof(char));
 
