@@ -29,16 +29,16 @@ int _len(const char *ptr)
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	int i;
+	int i, nl, ol;
+
 	dog_t *new = malloc(sizeof(dog_t));
 
 	if (new == NULL)
 	{
 		return (NULL);
 	}
-
-	int nl = _len(name);
-	int ol = _len(owner);
+	nl = _len(name);
+        ol = _len(owner);
 
 	new->name = malloc((nl + 1) * sizeof(char));
 	new->owner = malloc((ol + 1) * sizeof(char));
