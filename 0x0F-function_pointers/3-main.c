@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (99);
 	}
-	if ((*ptr == '/' || *ptr == '%' && num2 = 0)
+	if ((*ptr == '/' || *ptr == '%') && num2 == 0)
 	{
 		printf("Error\n");
 		return (100);
