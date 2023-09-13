@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 	p = (unsigned char *)main;
 	for (i = 0; i < num_b; i++)
 	{
-		printf("%02hhx%s", p[i]);
+		printf("%02hhx", p[i]);
 
 		if (i < num_b - 1)
 		{
