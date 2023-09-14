@@ -18,7 +18,7 @@ typedef struct format_specifier
 {
     char specifier;
     void (*printer)(va_list);
-} format_specifier_t;
+}oa;
 
 #endif /* VARIADIC_FUNCTIONS_H */
 
