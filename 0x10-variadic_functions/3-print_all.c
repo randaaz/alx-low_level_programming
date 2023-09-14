@@ -53,15 +53,13 @@ void print_string(va_list args)
 /**
  * print_all - Prints data based on a format string.
  * @format: A format string specifying the types of data to be printed.
- * @
-*/
+ */
 
 void print_all(const char * const format, ...)
 {
 	va_list args;
-
 	int i = 0, j;
-	char *sp = " ";
+	char *sp = "";
 
 	struct variable var[]  = {
 		{'c', print_char},
@@ -93,3 +91,4 @@ void print_all(const char * const format, ...)
 	va_end(args);
 	printf("\n");
 }
+
