@@ -5,12 +5,13 @@
  * @separator: The string to be printed between numbers
  * @n: The number of integers passed to the function
  *
- * Return:  sum of all its parameters
+ * Return: void
  */
 
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
-	int num, i;
+	int num;
+	unsigned int i;
 	va_list args;
 
 	va_start(args, n);
