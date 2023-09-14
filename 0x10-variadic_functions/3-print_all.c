@@ -47,14 +47,7 @@ void print_string(va_list args)
 {
 	char *sp = va_arg(args, char *);
 
-	if (sp == NULL)
-	{
-		printf("(nil)");
-	}
-	else
-	{
-		printf("%s", sp);
-	}
+	printf("%s", (sp ? sp : "(nil)"));
 }
 
 /**

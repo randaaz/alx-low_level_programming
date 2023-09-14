@@ -20,8 +20,8 @@ void print_all(const char * const format, ...);
 
 struct variable
 {
-    char variable;
-    void (*function)(va_list);
+	char variable;
+	void (*function)(va_list);
 };
 
 #endif
