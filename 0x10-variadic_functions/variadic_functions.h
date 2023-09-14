@@ -10,14 +10,14 @@ void print_strings(const char *separator, const unsigned int n, ...);
 void print_all(const char * const format, ...);
 
 /**
- * struct format_specifier - Specifies format specifiers and corresponding functions.
- * @specifier: The format specifier character.
- * @printer: A function pointer to the corresponding printing function.
+ * struct variable - specifying format specifiers and functions
+ * @variable: The format specifier character.
+ * @function: A function pointer to the corresponding printing function.
  */
-typedef struct format_specifier
+typedef struct variable
 {
-    char specifier;
-    void (*printer)(va_list);
+    char variable;
+    void (*function)(va_list);
 }oa;
 
 #endif /* VARIADIC_FUNCTIONS_H */
