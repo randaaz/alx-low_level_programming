@@ -10,14 +10,14 @@ void print_strings(const char *separator, const unsigned int n, ...);
 void print_all(const char * const format, ...);
 
 /**
- * struct variable - Struct variable
- * @variable: The variable character
- * @function: The function pointer taking a va_list argument
+ * struct variable - Struct variable for specifying
+ * format specifiers and functions.
+ * @variable: The format specifier character.
+ * @function: A function pointer to the corresponding printing function.
  *
- * Description: This struct defines a variable character and a function pointer
- *              to a function that takes a va_list argument.
+ * Description: This struct is used to map format specifier characters to their
+ *              respective printing functions for the print_all function.
  */
-
 struct variable
 {
 	char variable;

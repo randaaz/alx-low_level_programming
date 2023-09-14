@@ -53,10 +53,8 @@ void print_string(va_list args)
 /**
  * print_all - Prints data based on a format string.
  * @format: A format string specifying the types of data to be printed.
- * @...: A variable number of arguments corresponding to the format string.
- *
- * Return: void
- */
+ * @
+*/
 
 void print_all(const char * const format, ...)
 {
