@@ -4,11 +4,6 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-int sum_them_all(const unsigned int n, ...);
-void print_numbers(const char *separator, const unsigned int n, ...);
-void print_strings(const char *separator, const unsigned int n, ...);
-void print_all(const char * const format, ...);
-
 /**
  * struct variable - specifying format specifiers and functions
  * @variable: The format specifier character.
@@ -16,9 +11,13 @@ void print_all(const char * const format, ...);
  */
 typedef struct variable
 {
-    char variable;
-    void (*function)(va_list);
-}oa;
+	char variable;
+	void (*function)(va_list);
+} oa;
 
+int sum_them_all(const unsigned int n, ...);
+void print_numbers(const char *separator, const unsigned int n, ...);
+void print_strings(const char *separator, const unsigned int n, ...);
+void print_all(const char * const format, ...);
 #endif
 
