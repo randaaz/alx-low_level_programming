@@ -20,5 +20,5 @@ typedef struct variable
     void (*function)(va_list);
 }oa;
 
-#endif /* VARIADIC_FUNCTIONS_H */
+#endif
 
