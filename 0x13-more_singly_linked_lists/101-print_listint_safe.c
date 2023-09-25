@@ -42,13 +42,14 @@ size_t print_listint_safe(const listint_t *head)
 	size_t j = 0, i;
 	const listint_t **new1 = NULL;
 
-	while (head)
+	while (head != NULL)
 	{
 		for (i = 0; i < j; i++)
 		{
 			if (head == new1[i])
 			{
 				printf("-> [%p] %d\n", (void *)head, head->n);
+				free(new1);
 				return (j);
 			}
 		}
@@ -57,6 +58,6 @@ size_t print_listint_safe(const listint_t *head)
 		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
 	}
-	free((void *)new1);
+	free(new1);
 	return (j);
 }
