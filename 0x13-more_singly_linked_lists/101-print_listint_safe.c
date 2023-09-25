@@ -9,6 +9,7 @@
  * Return: A pointer to the updated list of visited nodes,
  * or exit with status 98 on failur.
  */
+
 const listint_t **list(const listint_t **l, size_t lt, const listint_t *new1)
 {
 	const listint_t **new_l;
@@ -17,18 +18,15 @@ const listint_t **list(const listint_t **l, size_t lt, const listint_t *new1)
 	new_l = malloc(lt * sizeof(listint_t *));
 	if (new_l == NULL)
 	{
-		free((void *)l);
+		free(l);
 		exit(98);
 	}
 	for (j = 0; j < lt - 1; j++)
 	{
 		new_l[j] = l[j];
 	}
-	new_l[lt - 1] = new1;
-
-	if (l != NULL)
-		free((void *)l);
-
+	new_l[j] = new1;
+	free(l);
 	return (new_l);
 }
 
