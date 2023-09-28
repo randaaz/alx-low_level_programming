@@ -11,7 +11,6 @@
 int clear_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned int Modified_Version;
-	int bit;
 
 	if (index >= sizeof(unsigned int) * 8)
 	{
