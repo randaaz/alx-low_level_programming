@@ -9,7 +9,7 @@
 
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int n = 0, base = 1;
+	unsigned int n = 0;
 
 	while (*b != '\0')
 	{
@@ -18,7 +18,6 @@ unsigned int binary_to_uint(const char *b)
 			return (0);
 		}
 		n = n * 2 + (*b - '0');
-		base *= 2;
 		b++;
 	}
 	return (n);
