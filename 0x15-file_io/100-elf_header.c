@@ -55,11 +55,11 @@ int main(int argc, char **argv)
  */
 void printMagic(Elf64_Ehdr d)
 {
-	int i;
+	int j;
 
 	printf("  Magic:   ");
-	for (i = 0; i < EI_NIDENT; i++)
-		printf("%2.2x%s", d.e_ident[i], i == EI_NIDENT - 1 ? "\n" : " ");
+	for (j = 0; j < EI_NIDENT; j++)
+		printf("%2.2x%s", d.e_ident[j], j == EI_NIDENT - 1 ? "\n" : " ");
 }
 
 /**
