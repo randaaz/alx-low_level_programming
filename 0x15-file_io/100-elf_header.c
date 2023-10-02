@@ -203,10 +203,10 @@ void printAbiVersion(Elf64_Ehdr d)
 void printType(Elf64_Ehdr d)
 {
 	char *ptr = (char *)&d.e_type;
-	int i = (d.e_ident[EI_DATA] == ELFDATA2MSB) ? 1 : 0;
+	int j = (d.e_ident[EI_DATA] == ELFDATA2MSB) ? 1 : 0;
 
 	printf("  Type:                              ");
-	switch (ptr[i])
+	switch (ptr[j])
 	{
 		case ET_NONE:
 			printf("NONE (None)");
@@ -224,7 +224,7 @@ void printType(Elf64_Ehdr d)
 			printf("CORE (core file)");
 			break;
 		default:
-			printf("<unknown>: %x", ptr[i]);
+			printf("<unknown>: %x", ptr[j]);
 	}
 	printf("\n");
 }
