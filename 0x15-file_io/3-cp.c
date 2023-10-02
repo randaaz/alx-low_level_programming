@@ -2,8 +2,8 @@
 
 #define U "Usage: cp file_from file_to\n"
 #define ENR "Error: Can't read from file NAME_OF_THE_FILE %s\n"
-#define ENC "Error: Can't close fd FD_VALUE %d\n"
-#define ENW "Error: Can't write to NAME_OF_THE_FILE %s\n"
+#define ENW "Error: Can't write to %s\n"
+#define ENC "Error: Can't close fd %d\n"
 #define P (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH)
 
 /**
