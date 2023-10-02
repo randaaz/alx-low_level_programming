@@ -1,14 +1,15 @@
 #include "main.h"
 #include <elf.h>
 
-void print_m(Elf64_Ehdr d);
-void print_c(Elf64_Ehdr d);
-void print_d(Elf64_Ehdr d);
-void print_v(Elf64_Ehdr d);
-void print_o(Elf64_Ehdr d);
-void print_a(Elf64_Ehdr d);
-void print_t(Elf64_Ehdr d);
-void print_entry(Elf64_Ehdr d);
+void printOsabiMore(Elf64_Ehdr d);
+void printMagic(Elf64_Ehdr d);
+void printClass(Elf64_Ehdr d);
+void printData(Elf64_Ehdr d);
+void printVersion(Elf64_Ehdr d);
+void printOsabi(Elf64_Ehdr d);
+void printAbiVersion(Elf64_Ehdr d);
+void printType(Elf64_Ehdr d);
+void printEntry(Elf64_Ehdr d);
 
 /**
  * main - Entry point
@@ -35,24 +36,24 @@ int main(int argc, char **argv)
 			d.e_ident[EI_MAG2] != ELFMAG2 || d.e_ident[EI_MAG3] != ELFMAG3)
 		dprintf(STDERR_FILENO, " NOT ELF file: %s\n", argv[1]), exit(98);
 	printf("ELF Header:\n");
-	print_m(d);
-	print_c(d);
-	print_d(d);
-	print_v(d);
-	print_o(d);
-	print_a(d);
-	print_t(d);
-	print_entry(d);
+	printMagic(d);
+	printClass(d);
+	printData(d);
+	printVersion(d);
+	printOsabi(d);
+	printAbiVersion(d);
+	printType(d);
+	printEntry(d);
 	if (close(num))
 		dprintf(STDERR_FILENO, " Error closing file: %d\n", num), exit(98);
 	return (EXIT_SUCCESS);
 }
 
 /**
- * print_m - Print the magic bytes from the ELF header
+ * printMagic - Print the magic bytes from the ELF header
  * @d: The ELF header structure
  */
-void print_m(Elf64_Ehdr d)
+void printMagic(Elf64_Ehdr d)
 {
 	int i;
 
@@ -62,10 +63,10 @@ void print_m(Elf64_Ehdr d)
 }
 
 /**
- * print_c - Print the ELF class information from the ELF header
+ * printClass - Print the ELF class information from the ELF header
  * @d: The ELF header structure
  */
-void print_c(Elf64_Ehdr d)
+void printClass(Elf64_Ehdr d)
 {
 	printf("  Class:                             ");
 	switch (d.e_ident[EI_CLASS])
@@ -84,10 +85,10 @@ void print_c(Elf64_Ehdr d)
 }
 
 /**
- * print_d - Print the endianness information from the ELF header
+ * printData - Print the endianness information from the ELF header
  * @d: The ELF header structure
  */
-void print_d(Elf64_Ehdr d)
+void printData(Elf64_Ehdr d)
 {
 	printf("  Data:                              ");
 	switch (d.e_ident[EI_DATA])
@@ -106,10 +107,10 @@ void print_d(Elf64_Ehdr d)
 }
 
 /**
- * print_v - Print the ELF version from the ELF header
+ * printVersion - Print the ELF version from the ELF header
  * @d: The ELF header structure
  */
-void print_v(Elf64_Ehdr d)
+void printVersion(Elf64_Ehdr d)
 {
 	printf("  Version:                           %d", d.e_ident[EI_VERSION]);
 	switch (d.e_ident[EI_VERSION])
@@ -123,10 +124,10 @@ void print_v(Elf64_Ehdr d)
 }
 
 /**
- * print_o - Print the Operating System/ABI information from the ELF header
+ * printOsabi - Print the Operating System/ABI information from the ELF header
  * @d: The ELF header structure
  */
-void print_o(Elf64_Ehdr d)
+void printOsabi(Elf64_Ehdr d)
 {
 	printf("  OS/ABI:                            ");
 	switch (d.e_ident[EI_OSABI])
@@ -165,16 +166,16 @@ void print_o(Elf64_Ehdr d)
 			printf("ARM");
 			break;
 		default:
-			print_a(d);
+			printOsabiMore(d);
 	}
 	printf("\n");
 }
 
 /**
- * print_a - Print more detailed OS/ABI information from the ELF header
+ * printOsabiMore - Print more detailed OS/ABI information from the ELF header
  * @d: The ELF header structure
  */
-void print_a(Elf64_Ehdr d)
+void printOsabiMore(Elf64_Ehdr d)
 {
 	switch (d.e_ident[EI_OSABI])
 	{
@@ -187,19 +188,52 @@ void print_a(Elf64_Ehdr d)
 }
 
 /**
- * print_t - Print the ABI version from the ELF header
+ * printAbiVersion - Print the ABI version from the ELF header
  * @d: The ELF header structure
  */
-void print_t(Elf64_Ehdr d)
+void printAbiVersion(Elf64_Ehdr d)
 {
 	printf("  ABI Version:                       %d\n", d.e_ident[EI_ABIVERSION]);
 }
 
 /**
- * print_entry - Print the entry point address
+ * printType - Print the ELF type information from the ELF header
  * @d: The ELF header structure
  */
-void print_entry(Elf64_Ehdr d)
+void printType(Elf64_Ehdr d)
+{
+	char *ptr = (char *)&d.e_type;
+	int i = (d.e_ident[EI_DATA] == ELFDATA2MSB) ? 1 : 0;
+
+	printf("  Type:                              ");
+	switch (ptr[i])
+	{
+		case ET_NONE:
+			printf("NONE (None)");
+			break;
+		case ET_REL:
+			printf("REL (Relocatable file)");
+			break;
+		case ET_EXEC:
+			printf("EXEC (Executable file)");
+			break;
+		case ET_DYN:
+			printf("DYN (Shared object file)");
+			break;
+		case ET_CORE:
+			printf("CORE (core file)");
+			break;
+		default:
+			printf("<unknown>: %x", ptr[i]);
+	}
+	printf("\n");
+}
+
+/**
+ * printEntry - Print the entry point address
+ * @d: The ELF header structure
+ */
+void printEntry(Elf64_Ehdr d)
 {
 	int i, l = 0;
 	unsigned char *p = (unsigned char *)&d.e_entry;
@@ -227,3 +261,4 @@ void print_entry(Elf64_Ehdr d)
 		printf("\n");
 	}
 }
+
