@@ -27,9 +27,6 @@ Upon completion of this project, you should be able to:
 - Don’t forget to push your header file.
 - All your header files should be include guarded.
 
-## Data Structures
-Please use the following data structures for this project:
-
 ## Tasks
 - 0. >>> ht = {}
 - 1. djb2
@@ -39,6 +36,9 @@ Please use the following data structures for this project:
 - 5. >>> print(ht)
 - 6. >>> del ht
 - 1 advanced task
+
+## Data Structures
+Please use the following data structures for this project:
 
 ```c
 /**
@@ -69,4 +69,3 @@ typedef struct hash_table_s
     unsigned long int size;
     hash_node_t **array;
 } hash_table_t;
-
