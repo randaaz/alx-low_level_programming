@@ -1,16 +1,20 @@
 #!/usr/bin/python3
 
-"""This module defines the function island_perimeter(grid) to calculate the perimeter of an island."""
+"""
+This module defines the function island_perimeter(grid)
+to calculate the perimeter of an island.
+"""
+
 
 def island_perimeter(grid):
-     """
+    """
     Returns the perimeter of the island described in grid.
 
     Args:
-    - grid (list of lists of integers): Represents the island.
+        - grid (list of lists of integers): Represents the island.
 
     Returns:
-    - int: Perimeter of the island.
+        - int: Perimeter of the island.
     """
     width = len(grid[0])
     height = len(grid)
