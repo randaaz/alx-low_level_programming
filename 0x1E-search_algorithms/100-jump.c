@@ -4,8 +4,10 @@
 /**
  * jump_search - Perform jump search on a sorted array.
  *
- * This function implements jump search, a searching algorithm for sorted arrays.
- * It uses a jumping step to quickly navigate through the array to find the index
+ * This function implements jump search, a searching
+ * algorithm for sorted arrays.
+ * It uses a jumping step to quickly navigate through
+ * the array to find the index
  * where the specified value is located.
  *
  * @array: Pointer to the first element of the array to search in.
