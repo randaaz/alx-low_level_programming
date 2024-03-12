@@ -29,7 +29,7 @@ i = 0;
 do {
 pr = list;
 i++;
-index = i * j;
+index = i *j;
 
 while (list->next && list->index < index)
 list = list->next;
